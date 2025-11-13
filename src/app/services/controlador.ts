@@ -149,14 +149,19 @@ export class Controlador {
   }
 
   //Editar Citas
-  getCitaPorId(id: number): Observable<any> {
-    const url = this.path_server + `citas/${id}`;
+  getCitaPorIdAdmin(id: number): Observable<any> {
+    const url = this.path_server + `admin/citas/${id}`;
     return this.http.get<any>(url, this.getAuthOptions());
   }
 
-  editarCita(id: number, citaData: any): Observable<any> {
-    const url = this.path_server + `citas/${id}`;
+  editarCitaAdmin(id: number, citaData: any): Observable<any> {
+    const url = this.path_server + `admin/citas/${id}`;
     return this.http.put<any>(url, citaData, this.getAuthOptions());
+  }
+
+  getMascotasDeUsuario(userId: number): Observable<any> {
+    const url = this.path_server + `admin/mascotas/por-usuario/${userId}`;
+    return this.http.get<any>(url, this.getAuthOptions());
   }
 
   cancelarCita(id: number): Observable<any> {
@@ -179,7 +184,7 @@ export class Controlador {
     return this.http.patch<any>(url, datosCancelacion, this.getAuthOptions());
   }
 
-    //Mostrar Citas Completadas (Historial)
+  //Mostrar Citas Completadas (Historial)
   getHistorialCitas() {
     const token = localStorage.getItem('token');
     const options = {
@@ -207,7 +212,7 @@ export class Controlador {
   }
 
   eliminarServicio(id: number): Observable<any> {
-    const url = this.path_server + `admin/servicios/${id}`
+    const url = this.path_server + `admin/servicios/${id}`;
     return this.http.delete<any>(url, this.getAuthOptions());
   }
 
@@ -216,7 +221,7 @@ export class Controlador {
     return this.http.get<any>(url, this.getAuthOptions('json'));
   }
 
-    /**
+  /**
    * Actualiza los datos de una mascota específica (PUT /mascotas/{id}).
    * NOTA: Esta función debe recibir FormData si incluye una imagen.
    * @param id El ID de la mascota a actualizar.

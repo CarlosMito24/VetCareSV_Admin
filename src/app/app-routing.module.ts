@@ -29,35 +29,61 @@ const routes: Routes = [
   },
   {
     path: 'crearnuevodmin',
-    loadChildren: () => import('./crearnuevodmin/crearnuevodmin.module').then( m => m.CrearnuevodminPageModule), canActivate: [IngresadoGuard],
+    loadChildren: () =>
+      import('./crearnuevodmin/crearnuevodmin.module').then(
+        (m) => m.CrearnuevodminPageModule
+      ),
+    canActivate: [IngresadoGuard],
   },
   {
     path: 'citaspendientes',
-    loadChildren: () => import('./citaspendientes/citaspendientes.module').then( m => m.CitaspendientesPageModule), canActivate: [IngresadoGuard],
+    loadChildren: () =>
+      import('./citaspendientes/citaspendientes.module').then(
+        (m) => m.CitaspendientesPageModule
+      ),
+    canActivate: [IngresadoGuard],
   },
   {
     path: 'citascompletadas',
-    loadChildren: () => import('./citascompletadas/citascompletadas.module').then( m => m.CitascompletadasPageModule), canActivate: [IngresadoGuard],
+    loadChildren: () =>
+      import('./citascompletadas/citascompletadas.module').then(
+        (m) => m.CitascompletadasPageModule
+      ),
+    canActivate: [IngresadoGuard],
   },
   {
     path: 'actualizarperfil',
-    loadChildren: () => import('./actualizarperfil/actualizarperfil.module').then( m => m.ActualizarperfilPageModule), canActivate: [IngresadoGuard],
+    loadChildren: () =>
+      import('./actualizarperfil/actualizarperfil.module').then(
+        (m) => m.ActualizarperfilPageModule
+      ),
+    canActivate: [IngresadoGuard],
   },
   {
     path: 'servicios',
-    loadChildren: () => import('./servicios/servicios.module').then( m => m.ServiciosPageModule)
+    loadChildren: () =>
+      import('./servicios/servicios.module').then((m) => m.ServiciosPageModule),
   },
   {
-    path: 'editarcita',
-    loadChildren: () => import('./editarcita/editarcita.module').then( m => m.EditarcitaPageModule)
+    path: 'editarcita/:id',
+    loadChildren: () =>
+      import('./editarcita/editarcita.module').then(
+        (m) => m.EditarcitaPageModule
+      ),
   },
   {
     path: 'editarservicio/:id',
-    loadChildren: () => import('./editarservicio/editarservicio.module').then( m => m.EditarservicioPageModule)
+    loadChildren: () =>
+      import('./editarservicio/editarservicio.module').then(
+        (m) => m.EditarservicioPageModule
+      ),
   },
   {
     path: 'crearservicio',
-    loadChildren: () => import('./crearservicio/crearservicio.module').then( m => m.CrearservicioPageModule)
+    loadChildren: () =>
+      import('./crearservicio/crearservicio.module').then(
+        (m) => m.CrearservicioPageModule
+      ),
   },
 ];
 

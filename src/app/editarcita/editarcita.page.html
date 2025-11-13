@@ -1,13 +1,33 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>editarcita</ion-title>
+    <ion-title>Editar Cita</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">editarcita</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  
+  <form [formGroup]="formularioCita" (ngSubmit)="guardarCambios()">
+    <label>Fecha de la cita</label>
+    <input type="date" placeholder="DD/MM/YYYY" required formControlName="fecha" />
+
+    <label>Hora de la cita</label>
+    <input type="time" required formControlName="hora" />
+
+    <label>Selecciona una mascota</label>
+    <select formControlName="mascota_id" placeholder="Selecciona la mascota para la cita"  name="mascota_id" required>
+      <option *ngFor="let mascota of mascotas" [value]="mascota.id">{{mascota.nombre}}</option>
+    </select>
+
+    <label>Selecciona un servicio</label>
+    <select formControlName="servicios_id" placeholder="Selecciona el motivo de la cita"  name="servicio_id" required>
+      <option *ngFor="let servicio of servicios" [value]="servicio.id">{{servicio.nombre}}</option>
+    </select>
+    
+    <ion-button type="submit" shape="round">
+      <ion-icon slot="start" name="save"></ion-icon>
+      Guardar Cambios
+    </ion-button>
+    
+  </form>
+
 </ion-content>
