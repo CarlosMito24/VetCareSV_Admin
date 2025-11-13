@@ -45,3 +45,17 @@ ion-title {
 ion-toolbar {
   --background: linear-gradient(to right, #cdffd8, #94b9ff);
 }
+
+form {
+  background: #539d96;
+  width: 350px;
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  border-radius: 25px;
+  color: #000;
+}
+
+.custom-loading .loading-wrapper {
+    border-radius: 25px;
+}

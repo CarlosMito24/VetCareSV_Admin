@@ -1,13 +1,55 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>editarservicio</ion-title>
+    <ion-title>Editar Servicio: {{ servicioActual?.nombre || 'Cargando...' }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">editarservicio</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <form [formGroup]="servicioForm" (ngSubmit)="onSubmit()" *ngIf="servicioActual">
+
+    <label>{{ imagenPrevisualizacionUrl ? 'Nueva Imagen (Previsualización)' : 'Imagen Actual' }}</label>
+    <div class="image-preview-container">
+      <img [src]="imagenPrevisualizacionUrl || imagenURLActual" alt="Imagen de la mascota"
+        style="width: 250px; height: 250px; object-fit: cover; border: none; border-radius: 25px; display: block; margin: auto;"
+        onerror="this.onerror=null; this.src='assets/default.png';">
+    </div>
+
+    <label>Nombre:</label>
+    <input type="text" placeholder="Nombre" formControlName="nombre" />
+
+    <div
+      *ngIf="servicioForm.get('nombre')?.invalid && (servicioForm.get('nombre')?.dirty || servicioForm.get('nombre')?.touched)">
+      <ion-text color="danger" class="error-message" *ngIf="servicioForm.get('nombre')?.errors?.['required']">
+        El nombre es obligatorio.
+      </ion-text>
+    </div>
+
+    <label>Descripcion:</label>
+    <input type="text" placeholder="Descripción" formControlName="descripcion" required=""/>
+
+    <label>Precio:</label>
+    <input type="number" placeholder="Precio" formControlName="precio" />
+
+    <label>Cambiar Imagen
+      (Opcional)</label>
+
+    <input type="file" (change)="onFileChange($event)" accept="image/*" #fileInput class="hidden-file-input">
+    <ion-button (click)="fileInput.click()" shape="round">
+      <ion-icon slot="start" name="cloud-upload-outline"></ion-icon>
+      {{ imagenSeleccionada ? 'Seleccionar otra imagen' : 'Subir nueva imagen' }}
+    </ion-button>
+
+    <ion-text color="medium" class="file-name-display" *ngIf="imagenSeleccionada">
+      {{ imagenSeleccionada.name }}
+    </ion-text>
+    <ion-button *ngIf="imagenSeleccionada" (click)="clearNewImageSelection()" fill="clear" color="danger"
+      class="clear-button">
+      <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+    </ion-button>
+
+    <ion-button expand="block" type="submit" [disabled]="servicioForm.invalid" shape="round">
+      Guardar Cambios
+      <ion-icon slot="start" name="save"></ion-icon>
+    </ion-button>
+  </form>
 </ion-content>

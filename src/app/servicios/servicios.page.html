@@ -13,17 +13,26 @@
 
   <div class="padre">
     <div *ngFor="let servicio of servicios">
-      <div class="servicios">
-        <div class="imagen-container">
-          <img alt="Imagen del servicio" [src]="'http://127.0.0.1:8000/images/' + servicio.imagen" class="imagen" />
+      <div class="misservicios">
+        <div class="servicios">
+          <div class="imagen-container">
+            <img alt="Imagen del servicio" [src]="'http://127.0.0.1:8000/images/' + servicio.imagen" class="imagen" />
+          </div>
+          <div class="contenido-servicio">
+            <p><strong>{{servicio.nombre}}</strong></p>
+            <p>{{servicio.descripcion}}</p>
+            <p *ngIf="servicio.precio"><strong>Precio: </strong> {{servicio.precio}}</p>
+            <p *ngIf="!servicio.precio"><strong>Precio: </strong> A Consultar</p>
+          </div>
         </div>
-        <div class="contenido-servicio">
-          <p><strong>{{servicio.nombre}}</strong></p>
-          <p>{{servicio.descripcion}}</p>
-          <p *ngIf="servicio.precio"><strong>Precio: </strong> {{servicio.precio}}</p>
-          <p *ngIf="!servicio.precio"><strong>Precio: </strong> A Consultar</p>
+        <div class="botones">
+          <ion-button shape="round" [routerLink]="['/editarservicio', servicio.id]" class="editar">Editar
+            Servicio</ion-button>
+          <ion-button shape="round" class="cancelar" (click)="confirmarEliminacion(servicio.id)">Eliminar
+            Servicio</ion-button>
         </div>
       </div>
     </div>
+
   </div>
 </ion-content>

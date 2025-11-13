@@ -205,4 +205,25 @@ export class Controlador {
     const url = this.path_server + 'admin/servicios';
     return this.http.post<any>(url, servicioData, options);
   }
+
+  eliminarServicio(id: number): Observable<any> {
+    const url = this.path_server + `admin/servicios/${id}`
+    return this.http.delete<any>(url, this.getAuthOptions());
+  }
+
+  getServicioPorId(id: number): Observable<any> {
+    const url = this.path_server + `admin/servicios/${id}`;
+    return this.http.get<any>(url, this.getAuthOptions('json'));
+  }
+
+    /**
+   * Actualiza los datos de una mascota específica (PUT /mascotas/{id}).
+   * NOTA: Esta función debe recibir FormData si incluye una imagen.
+   * @param id El ID de la mascota a actualizar.
+   * @param mascotaData Los datos de la mascota (puede ser JSON o FormData).
+   */
+  editarServicio(id: number, servicioData: any): Observable<any> {
+    const url = this.path_server + `admin/servicios/${id}`;
+    return this.http.post<any>(url, servicioData, this.getAuthOptions('form'));
+  }
 }

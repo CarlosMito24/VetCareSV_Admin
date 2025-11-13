@@ -3,6 +3,7 @@ import { Controlador } from '../../app/services/controlador';
 import { catchError, finalize } from 'rxjs/operators';
 import { of, forkJoin, Observable} from 'rxjs';
 import { AlertController, ToastController, LoadingController} from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-servicios',
@@ -17,6 +18,7 @@ servicios: any[] = [];
     private toastCtrl: ToastController,
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -61,5 +63,64 @@ servicios: any[] = [];
       color: color,
     });
     toast.present();
+  }
+
+   /**
+   * Muestra un diálogo de confirmación antes de eliminar una mascota.
+   * @param mascotaId ID de la mascota a eliminar.
+   */
+  async confirmarEliminacion(mascotaId: number) {
+    const alert = await this.alertCtrl.create({
+      header: 'Confirmar Eliminación',
+      message:
+        '¿Estás seguro de que deseas eliminar esta mascota? Esta acción no se puede deshacer y se eliminarán sus datos asociados.',
+      buttons: [
+        {
+          text: 'No, mantener',
+          role: 'cancel',
+          cssClass: 'secondary',
+        },
+        {
+          text: 'Sí, Eliminar',
+          handler: () => {
+            this.eliminarServicio(mascotaId); 
+          },
+        },
+      ],
+    });
+    await alert.present();
+  }
+
+
+  /**
+   * Llama al servicio para eliminar la mascota y actualiza la lista.
+   * @param id ID de la mascota a eliminar.
+   */
+  async eliminarServicio(id: number) {
+    const loading = await this.loadingCtrl.create({
+      cssClass: 'custom-loading',
+      message: 'Eliminando servicio...',
+      spinner: 'crescent',
+    });
+    await loading.present();
+
+    this.controladorService
+      .eliminarServicio(id)
+      .pipe(
+        finalize(async () => {
+          await loading.dismiss();
+        }),
+        catchError((error) => {
+          this.mostrarMensaje(
+            'Error al eliminar el servicio. Intente nuevamente.',
+            'danger'
+          );
+          return of(null);
+        })
+      )
+      .subscribe(() => {
+        this.mostrarMensaje('Servicio eliminado correctamente.', 'success');
+        this.cargarDatosConLoading(true); 
+      });
   }
 }

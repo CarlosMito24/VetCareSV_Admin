@@ -69,7 +69,7 @@ export class CrearnuevodminPage implements OnInit {
       .subscribe((response) => {
         if (response) {
           this.mostrarToast('Admin creado correctamente', 'success');
-          this.router.navigate(['/configuraciones']);
+          this.router.navigate(['/home']);
 
           this.admin = {
             nombres: '',

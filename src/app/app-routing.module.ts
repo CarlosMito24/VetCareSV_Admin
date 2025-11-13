@@ -52,7 +52,7 @@ const routes: Routes = [
     loadChildren: () => import('./editarcita/editarcita.module').then( m => m.EditarcitaPageModule)
   },
   {
-    path: 'editarservicio',
+    path: 'editarservicio/:id',
     loadChildren: () => import('./editarservicio/editarservicio.module').then( m => m.EditarservicioPageModule)
   },
   {
