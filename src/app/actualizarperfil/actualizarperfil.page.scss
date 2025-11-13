@@ -1,0 +1,39 @@
+ion-icon {
+  margin-right: 10px;
+}
+
+ion-button {
+  display: block;
+  margin: 10px auto;
+  width: 250px;
+  --color: #fff;
+  --background: #3bb04f;
+}
+
+label{
+  display: block;
+  text-align: center;
+  margin: 10px;
+}
+
+input {
+  border-radius: 25px;
+  width: 300px;
+  margin: 10px auto;
+  height: 40px;
+  display: block;
+  border: none;
+  background-color: #fff;
+  padding: 10px;
+  box-sizing: border-box;
+  color: #000;
+  text-align: center;
+}
+
+.span {
+  color: red;
+  display: block;
+  margin: auto;
+  font-size: 12px;
+  text-align: center;
+}

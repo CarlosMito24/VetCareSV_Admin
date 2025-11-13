@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img src="../../assets/logo.jpg" alt="Logo de la empresa" />
+  <label>Inicia sesión </label>
+  <label>Correo:</label>
+  <input
+    type="text"
+    [(ngModel)]="admin.email"
+    labelPlacement="floating"
+    label="Correo"
+    placeholder="ejemplo@gmail.com"
+    autocomplete="email"
+  />
+  <label>Contraseña:</label>
+  <input
+    type="password"
+    [(ngModel)]="admin.password"
+    labelPlacement="floating"
+    label="Contraseña"
+    placeholder="Contraseña"
+  />
+
+  <ion-button shape="round" (click)="login()">
+    <ion-icon name="log-in" size="large"></ion-icon>Iniciar Sesión</ion-button
+  >
+</ion-content>

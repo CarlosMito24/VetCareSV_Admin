@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Historial de Citas Pendientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<h2>Historial de Citas Pendientes </h2>
+  <div *ngIf="citaspendientes.length === 0" class="mensaje">
+    <p>¡No tienes citas pendientes!</p>
+  </div>
+  <div *ngIf="citaspendientes.length > 0" class="padre">
+    <div *ngFor="let citaspendiente of citaspendientes">
+      <div class="citas">
+        <div class="citaspendientes">
+          <div class="imagen-container">
+            <img alt="Imagen de la mascota " class="imagen"
+              [src]="'http://127.0.0.1:8000/images/' + citaspendiente.mascota.imagen" />
+          </div>
+          <div class="contenido-cita">
+            <p><strong>Fecha: </strong> {{citaspendiente.fecha}}</p>
+            <p><strong>Hora: </strong> {{citaspendiente.hora}}</p>
+            <p> <strong>Mascota: </strong>{{citaspendiente.mascota.nombre}}</p>
+            <p><strong>Motivo: </strong> {{citaspendiente.servicio.nombre}}</p>
+            <p><strong>Estado: </strong>{{citaspendiente.estado.nombre}}</p>
+          </div>
+        </div>
+        <div class="botones">
+          <ion-button shape="round" class="completar" (click)="confirmarCitaCompletada(citaspendiente.id)">Completar</ion-button>
+          <ion-button shape="round" class="editar" [routerLink]="['/editarcita', citaspendiente.id]">Editar</ion-button>
+          <ion-button shape="round" class="cancelar" (click)="confirmarCancelacion(citaspendiente.id)">Cancelar</ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,50 @@
+.citascompletadas {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  border-radius: 25px;
+  width: 350px;
+  height: 200px;
+  background: linear-gradient(to right, #cdffd8, #94b9ff);
+  margin: 10px auto;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.contenido-cita{
+  padding: 10px 0;
+  color: #000;
+}
+
+.imagen-container {
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+
+.imagen {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+  border-radius: 25px;
+}
+
+.mensaje {
+  text-align: center;
+  background-color: red;
+  width: 350px;
+  display: block;
+  margin: auto;
+  border-radius: 25px;
+  padding: 10px;
+  color: #fff;
+}
+
+.padre {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  margin: 10px;
+}

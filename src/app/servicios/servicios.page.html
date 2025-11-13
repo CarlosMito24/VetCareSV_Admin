@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nuestros Servicios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button shape="round" routerLink="/crearservicio">
+    <ion-icon slot="start" name="add-circle"></ion-icon>Agregar un Nuevo Servicio
+  </ion-button>
+  <h2>Nuestros Servicios para tu Mascota</h2>
+  <p style="text-align: center;">Los servicios que ofrecemos son los siguientes:</p>
+
+  <div class="padre">
+    <div *ngFor="let servicio of servicios">
+      <div class="servicios">
+        <div class="imagen-container">
+          <img alt="Imagen del servicio" [src]="'http://127.0.0.1:8000/images/' + servicio.imagen" class="imagen" />
+        </div>
+        <div class="contenido-servicio">
+          <p><strong>{{servicio.nombre}}</strong></p>
+          <p>{{servicio.descripcion}}</p>
+          <p *ngIf="servicio.precio"><strong>Precio: </strong> {{servicio.precio}}</p>
+          <p *ngIf="!servicio.precio"><strong>Precio: </strong> A Consultar</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

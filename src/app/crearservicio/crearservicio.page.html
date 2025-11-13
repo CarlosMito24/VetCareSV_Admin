@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Crear Servicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="crearServicio()">
+     <label>Foto Servicio</label>
+    <input type="file" (change)="onFileChange($event)" />
+    <div *ngIf="imagenPreview" class="ion-margin-top">
+      <p style="text-align: center;">Previsualización:</p>
+      <img [src]="imagenPreview" alt="Previsualización de la imagen"
+        style="width: 250px; height: 250px; object-fit: cover; border: none; border-radius: 25px; display: block; margin: auto;" />
+    </div>
+    <label>Nombre:</label>
+    <input
+      type="text"
+      placeholder="Nombre"
+      [(ngModel)]="servicio.nombre"
+      name="nombre"
+      required
+    />
+
+    <label>Descripción:</label>
+    <input
+      type="text"
+      placeholder="Especie"
+      [(ngModel)]="servicio.descripcion"
+      name="descripcion"
+      required
+    />
+
+    <label>Precio:</label>
+    <input
+      type="number"
+      [(ngModel)]="servicio.precio"
+      name="precio"
+      placeholder="00.00"
+    />
+
+    <ion-button shape="round" type="submit">
+      <ion-icon slot="start" name="add-circle"></ion-icon
+      >Crear Servicio</ion-button
+    >
+  </form>
+</ion-content>

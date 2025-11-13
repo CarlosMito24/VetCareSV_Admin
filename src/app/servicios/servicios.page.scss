@@ -1,0 +1,50 @@
+.servicios {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  border-radius: 25px;
+  width: 350px;
+  height: 225px;
+  background: linear-gradient(to right, #3bb04f, #1ae6bb);
+  margin: 10px auto;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.imagen-container {
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.imagen {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+  border-radius: 25px;
+}
+
+h2 {
+  text-align: center;
+  margin: 10px;
+}
+
+.contenido-servicio p {
+  color: #000;
+  margin: 10px;
+}
+
+.padre {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  margin: 10px;
+}
+
+ion-button{
+  display: block;
+  margin: 10px auto;
+  width: 300px;
+  height: 50px;
+}

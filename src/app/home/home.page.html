@@ -1,20 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Inicio
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <h2>¡Bienvenido a Pet Care SV!</h2>
+  <p>
+    Somos tu veterinaria y peluquería salvadoreña de confianza. Nacimos con el propósito de ofrecer a tus mejores amigos
+    peludos una atención integral y de calidad, combinando la salud con el bienestar en un solo lugar. Confía en
+    nosotros para cuidar de tu mascota como si fuera nuestra.
+  </p>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="botonescitas">
+    <ion-button shape="round" routerLink="/citaspendientes">
+      <ion-icon slot="start" name="calendar"></ion-icon>Ver Citas Pendientes
+    </ion-button>
+    <ion-button shape="round" routerLink="/citascompletadas">
+      <ion-icon slot="start" name="calendar"></ion-icon>Ver Citas Completadas
+    </ion-button>
+    <ion-button shape="round" routerLink="/crearnuevodmin">
+      <ion-icon slot="start" name="person-add"></ion-icon>Crear Nuevo Administrador
+    </ion-button>
+    <ion-button shape="round" routerLink="/servicios">
+      <ion-icon slot="start" name="code-working"></ion-icon>Ver Servicios
+    </ion-button>
   </div>
 </ion-content>
